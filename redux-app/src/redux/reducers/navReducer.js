@@ -4,7 +4,7 @@ const initialState = {
   title: 'Home',
 }
 
-const navState = (state = initialState, action) => {
+const navReducer = (state = initialState, action) => {
   switch(action.type) {
     case types.NAV_CLICK:
       return {
@@ -15,4 +15,4 @@ const navState = (state = initialState, action) => {
   }
 }
 
-export default navState;
+export default navReducer;

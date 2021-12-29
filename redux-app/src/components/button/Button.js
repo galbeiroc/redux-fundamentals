@@ -1,20 +1,37 @@
+import { connect } from 'react-redux';
+
+import { navClick } from '../../redux/actions/navActions';
+
 import './index.css';
 
-function Button() {
+function Button({ title, navClick }) {
+  const handleClick = (_title) => {
+    navClick({
+      title: _title,
+    })
+  };
+
   return (
     <div className="btn">
       <header className="App-header">
         <div>
-          <h1>Title</h1>
+          <h1>{title}</h1>
         </div>
         <ul>
-          <li>Home</li>
-          <li>List</li>
-          <li>New</li>
+          <li onClick={() => handleClick('Home')}>Home</li>
+          <li onClick={() => handleClick('List')}>List</li>
+          <li onClick={() => handleClick('New')}>New</li>
         </ul>
       </header>
     </div>
   )
 }
 
-export default Button;
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    title: state.navReducer.title
+  }
+}
+
+export default connect(mapStateToProps, { navClick })(Button);
