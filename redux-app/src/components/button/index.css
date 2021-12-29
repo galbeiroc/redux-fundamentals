@@ -1,0 +1,18 @@
+.btn {
+  width: 100vw;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li, a {
+  display: inline-block;
+  padding: 4px 10px;
+  margin: 10px 6px;
+  border: 1px solid #666;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
