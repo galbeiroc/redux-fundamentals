@@ -13,7 +13,6 @@ class ColorStore extends EventEmitter {
     switch(action.type) {
       case ColorActions.COLOR_APP_ACTIONS.CHANGE_COLOR: {
         this.activeColor = action.value;
-        console.log(action.value)
         this.emit('storeUpdated');
         break;
       }
@@ -29,4 +28,4 @@ class ColorStore extends EventEmitter {
 const colorStore = new ColorStore();
 dispatcher.register(colorStore.handleActions);
 
-export default new ColorStore();
+export default colorStore;

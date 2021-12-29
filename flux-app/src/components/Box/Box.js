@@ -1,25 +1,26 @@
 import { useEffect, useState } from 'react';
-import ColorStore from '../../flux/stores/colorStore';
+import colorStore from '../../flux/stores/colorStore';
 
 import './index.css';
 
 function Box() {
-  const [color, setColor] = useState(ColorStore.getActiveColor())
+  const [color, setColor] = useState(colorStore.getActiveColor());
+
   useEffect(() => {
-    ColorStore.on('storeUpdated', updateColor);
+    colorStore.on('storeUpdated', updateColor);
 
     return () => {
-      ColorStore.removeListener('storeUpdated', updateColor)
+      colorStore.removeListener('storeUpdated', updateColor)
     }
   }, []);
 
   const updateColor = () => {
-    setColor(ColorStore.getActiveColor());
+    setColor(colorStore.getActiveColor());
   };
 
   return (
     <div className="box">
-      <div className="color-container" style={{ background: color }}></div>
+      <div className="color-container" style={{ backgroundColor: color }}></div>
     </div>
   )
 }
