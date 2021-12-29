@@ -1,5 +1,9 @@
+.box {
+  margin-top: 10px;
+}
+
 .color-container {
-  width: 200px;
-  height: 150px;
-  border: 1px solid green;
+  width: 300px;
+  height: 250px;
+  border: 1px solid gray;
 }

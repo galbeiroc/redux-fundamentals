@@ -5,7 +5,7 @@ export const COLOR_APP_ACTIONS = {
 }
 
 export function changeColor(colorName) {
-  dispatcher.dispatch( payload: {
+  dispatcher.dispatch({
     type: COLOR_APP_ACTIONS.CHANGE_COLOR,
     value: colorName,
   })
