@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { navClick } from '../../redux/actions/navActions';
 
@@ -17,11 +18,9 @@ function Button({ title, navClick }) {
         <div>
           <h1>{title}</h1>
         </div>
-        <ul>
-          <li onClick={() => handleClick('Home')}>Home</li>
-          <li onClick={() => handleClick('List')}>List</li>
-          <li onClick={() => handleClick('New')}>New</li>
-        </ul>
+        <Link to="/" onClick={() => handleClick('Home')}>Home</Link>
+        <Link to="/list" onClick={() => handleClick('List')}>List</Link>
+        <Link to="/new" onClick={() => handleClick('New')}>New</Link>
       </header>
     </div>
   )
