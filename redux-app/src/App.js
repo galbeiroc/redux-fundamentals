@@ -1,10 +1,6 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Button from './components/button/Button';
 
-import Home from './pages/home/Home';
-import List from './pages/list/List';
-import Form from './pages/form/Form';
-
 import './App.css';
 
 function App() {
