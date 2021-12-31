@@ -12,7 +12,7 @@ export const requestSend = () => ({
 export const requestData = data => ({
   type: types.REQUEST_DATA,
   payload: {
-    data,
+    list: data,
     loading: false,
   }
 });

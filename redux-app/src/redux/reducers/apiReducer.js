@@ -1,7 +1,7 @@
 import * as types from '../actions/actionsTypes';
 
 const initialState = {
-  data: [],
+  list: [],
   loading: false,
   error: '',
 }
@@ -17,7 +17,7 @@ const apiReducer = (state = initialState, action) => {
     case types.REQUEST_DATA: {
       return {
         ...state,
-        data: action.payload.data,
+        data: action.payload.list,
         loading: action.payload.loading,
       }
     }
