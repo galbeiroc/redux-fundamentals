@@ -2,14 +2,6 @@ import axios from 'axios';
 
 import * as types from './actionsTypes';
 
-export const callApi = ({ data, loading }) => ({
-  type: types.CALL_API,
-  payload: {
-    data,
-    loading,
-  }
-});
-
 export const requestSend = () => ({
   type: types.REQUEST_SEND,
   payload: {
@@ -21,7 +13,7 @@ export const requestData = data => ({
   type: types.REQUEST_DATA,
   payload: {
     data,
-    loading: true,
+    loading: false,
   }
 });
 
@@ -40,8 +32,8 @@ const fetchData = () => {
 }
 
 export const getData = () => dispatch => {
-  dispatch(requestSend);
+  dispatch(requestSend());
   fetchData()
-    .then(data => requestData(data))
-    .catch(err => fetchData(err));
+    .then(data => dispatch(requestData(data.data)))
+    .catch(err => dispatch(requestError(err)));
 }
