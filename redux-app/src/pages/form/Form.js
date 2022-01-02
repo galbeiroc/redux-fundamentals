@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
+import { sendNewData } from '../../redux/actions/apiActions';
 
 import './index.css';
 
@@ -35,11 +36,19 @@ const renderField = ({ label, input, type, meta: { touched, error, warning } }) 
   </div>
 );
 
-let Form = () => {
+let Form = ({ responseOk, loading, sendNewData, handleSubmit }) => {
+
+  const beforeSubmit = values => {
+    values.user_id = 13;
+    sendNewData(values);
+  };
+
   return (
     <div className='content-form'>
       <h3>Add new message</h3>
-      <form>
+      {loading && <p>Sending data....</p>}
+      {responseOk && <p>Data sended successfully</p>}
+      <form onSubmit={handleSubmit(beforeSubmit)}>
         <div>
           <Field name="subject" label="Subject" type="text" component={renderField} />
         </div>
@@ -59,4 +68,9 @@ Form = reduxForm({
   validate,
 })(Form)
 
-export default connect()(Form);
+const mapStateToProps = state => ({
+  responseOk: state.apiReducer.ok,
+  loading: state.apiReducer.loading,
+});
+
+export default connect(mapStateToProps, { sendNewData })(Form);

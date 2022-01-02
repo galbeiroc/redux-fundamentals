@@ -28,6 +28,13 @@ const apiReducer = (state = initialState, action) => {
         error: action.payload.error,
       }
     }
+    case types.REQUEST_POST_DATA: {
+      return {
+        ...state,
+        ok: action.payload.ok,
+        loading: action.payload.loading,
+      }
+    }
     default: return state;
   }
 }
